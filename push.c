@@ -15,7 +15,7 @@ void push_m(monty_info_t *dlist, unsigned int number)
 	int value_added;
 	char *str_token;
 
-	str_token = strtok_r(NULL, "\n ", &dlist->s);
+	str_token = __strtok_r(NULL, "\n ", &dlist->s);
 	if (!str_token)
 	{
 		printf("L<%i>:usage: push integer\n", number);

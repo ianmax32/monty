@@ -19,7 +19,7 @@ void run_command(char *s, unsigned int number, monty_info_t *info)
 		{NULL, NULL}
 	};
 
-	str_token = strtok_r(s, "\n", &info->s);
+	str_token = __strtok_r(s, "\n", &info->s);
 	if (!str_token)
 	{
 		printf("Error: string tokenizer");
