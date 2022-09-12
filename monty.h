@@ -1,6 +1,7 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -22,6 +23,18 @@ typedef struct stack_s
 } stack_t;
 
 /**
+ * struct monty_info_s - string values lined to the stack
+ * @s:string value for instruction in the current line
+ * @list: pointer to the list
+ */
+typedef struct monty_info_s
+{
+	char *s;
+	stack_t *list;
+} monty_info_t;
+
+
+/**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
@@ -32,21 +45,12 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	void (*f)(monty_info_t *stack, unsigned int line_number);
 } instruction_t;
 
-/**
- * struct monty_info_s - string values lined to the stack
- * @s:string value for instruction in the current line
- * @list: pointer to the list
- */
-typedef struct monty_info_s
-{
-	char *s;
-	stack_t list;
-} monty_info_t;
-
-void push_m(unsigned int number, monty_info_t *dlist);
-void pall_m(unsigned int number, monty_info_t *dlist);
+void push_m(monty_info_t *dlist, unsigned int number);
+void pall_m(monty_info_t *dlist, unsigned int number);
 void run_command(char *s, unsigned int number, monty_info_t *info);
 int read_file(FILE *file_to_read);
+
+#endif

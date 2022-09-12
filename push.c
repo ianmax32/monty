@@ -1,19 +1,21 @@
 #include "monty.h"
+#include <string.h>
+#include <stdlib.h>
 
 /**
  * push_m-function for the opcode push in monty language
- * @number:line number
  * @dlist:double liinked list to be pushed to
+ * @number:line number
  * Return:0
  */
 
-void push_m(unsigned int number, monty_info_t *dlist)
+void push_m(monty_info_t *dlist, unsigned int number)
 {
-	stack_t new_value;
+	stack_t *new_value;
 	int value_added;
 	char *str_token;
 
-	str_token = strtok(NULL, "\n", &dlist->s);
+	str_token = strtok_r(NULL, "\n ", &dlist->s);
 	if (!str_token)
 	{
 		printf("L<%i>:usage: push integer\n", number);
@@ -24,7 +26,7 @@ void push_m(unsigned int number, monty_info_t *dlist)
 	new_value = malloc(sizeof(stack_t));
 	if (!new_value)
 	{
-		printf("Error: malloc did not work\n");
+		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 

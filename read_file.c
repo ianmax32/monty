@@ -1,4 +1,6 @@
 #include "monty.h"
+#include <string.h>
+#include <stdlib.h>
 
 /**
  * read_filr - function is used to read monty file
@@ -17,6 +19,7 @@ int read_file(FILE *file_to_read)
 	info = malloc(sizeof(monty_info_t));
 	if (!info)
 	{
+		printf("Error: malloc failed");
 		return (EXIT_FAILURE);
 	}
 

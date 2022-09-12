@@ -12,14 +12,14 @@
 void run_command(char *s, unsigned int number, monty_info_t *info)
 {
 	char *str_token;
-	instruction_t *instuction;
+	instruction_t *instruction;
 	instruction_t commands[] = {
 		{"pall", pall_m},
 		{"push", push_m},
 		{NULL, NULL}
 	};
 
-	str_token = strtok(s, "\n", &info->s);
+	str_token = strtok_r(s, "\n", &info->s);
 	if (!str_token)
 	{
 		printf("Error: string tokenizer");
