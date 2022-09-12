@@ -24,7 +24,9 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
+	printf("File read sucess");
 	value = read_file(file_to_read);
+
 	if (value == EXIT_FAILURE)
 	{
 		exit(EXIT_FAILURE);

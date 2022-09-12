@@ -1,6 +1,7 @@
 #include "monty.h"
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * read_filr - function is used to read monty file
@@ -24,12 +25,12 @@ int read_file(FILE *file_to_read)
 	}
 
 	length = 0;
-	number = 0;
+	number = -1;
 	s = NULL;
 	info->s = NULL;
 	info->list = NULL;
 
-	while (getline(&s, &length, file_to_read) != -1)
+	while (fread(&s, sizeof(char), 10000, file_to_read) != length)
 	{
 		run_command(s, number, info);
 		++number;
